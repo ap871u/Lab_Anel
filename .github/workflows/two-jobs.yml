@@ -1,0 +1,17 @@
+name: Pipeline con dos jobs
+on:
+push:
+branches:
+- main
+jobs:
+job-one:
+runs-on: ubuntu-latest
+steps:
+- name: Step 1 - Echo in Job One
+run: echo "Este es el Job Uno: Ejecutando primer trabajo"
+job-two:
+runs-on: ubuntu-latest
+needs: job-one
+steps:
+- name: Step 1 - Echo in Job Two
+run: echo "Este es el Job Dos: Depende del Job Uno"
